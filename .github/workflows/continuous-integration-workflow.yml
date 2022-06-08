@@ -36,5 +36,5 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: matjadach/module8:latest
+        tags: matjadach/module8:${{github.ref}}
         no-cache: true
