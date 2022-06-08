@@ -3,7 +3,7 @@ on: [push]
 
 jobs:
   build:
-    name: Build, test & publish docker image
+    name: Build & test
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -25,7 +25,12 @@ jobs:
     - name: Typescript test
       run: npm run test
       working-directory: ./DotnetTemplate.Web
-    
+
+  docker_login, build & push:
+    name: Docker login, build and push to dokcerhub
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
     - name: Docker login
       uses: docker/login-action@v2
       with:
